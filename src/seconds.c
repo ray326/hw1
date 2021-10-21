@@ -11,7 +11,7 @@
 #define BUFFER_SIZE 128
 
 #define PROC_NAME "seconds"
-unsigned long init_jiffies,total_elapsed_time; //可以用這裡的變數
+unsigned long init_jiffies; //可以用這裡的變數
 
 /**
  * Function prototypes
