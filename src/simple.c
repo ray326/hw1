@@ -7,24 +7,27 @@
 // 當模組被載入會觸發這個函式 返回0代表成功 其他值代表失敗
 static int simple_init(void)
 {
+    unsigned long jif_init = jiffies;
+    //time_t init = time(NULL), end;
     printk(KERN_INFO "Loading Module\n");
     
     //////////////////////
-    ////<在此加入程式碼>////
+    ////<在此加入程式碼>///
     /////////////////////
-    // printk(KERN_INFO "");  印出載入時的jiffies，使用％lu來表示，格式為"init_jiffies: XXXXXXXXXXX"，記得換行
-    // printk(KERN_INFO "");  印出系統定義的的HZ，使用％d來表示，格式為"HZ: XXX"，記得換行
+     printk(KERN_INFO "init_:jiffies: %lu\n", jif_init);  //印出載入時的jiffies，使用％lu來表示，格式為"init_jiffies: XXXXXXXXXXX"，記得換行
+     printk(KERN_INFO "HZ: %d", HZ);  //印出系統定義的的HZ，使用％d來表示，格式為"HZ: XXX"，記得換行
        return 0;
 }
 
 // 當模組被移除會觸發這個函式 無返回值
 static void simple_exit(void) {
-    
+    unsigned long jif_exit;
     //////////////////////
     ////<在此加入程式碼>////
+    jif_exit = jiffies;
     /////////////////////>
-    //printk(KERN_INFO "");  印出移除時的jiffies，使用％lu來表示，格式為"exit_jiffies: XXXXXXXXXXX"，記得換行
-	printk(KERN_INFO "Removing Module\n");
+    printk(KERN_INFO "exit_jiffies: %lu\n", jif_exit); //印出移除時的jiffies，使用％lu來表示，格式為"exit_jiffies: XXXXXXXXXXX"，記得換行
+    printk(KERN_INFO "Removing Module\n");
 }
 
 //這兩個巨集指令是註冊模組的入口與出口
